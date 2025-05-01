@@ -35,11 +35,11 @@ class Command(BaseCommand):
 
             Weight.objects.update_or_create(
                 portfolio=pf1, asset=asset, date=weights_date,
-                defaults={'value': row[2]}
+                defaults={'weight': row[2]}
             )
             Weight.objects.update_or_create(
                 portfolio=pf2, asset=asset, date=weights_date,
-                defaults={'value': row[3]}
+                defaults={'weight': row[3]}
             )
 
         self.stdout.write("Cargando precios...")
@@ -53,7 +53,7 @@ class Command(BaseCommand):
                 if asset:
                     Price.objects.update_or_create(
                         asset=asset, date=date,
-                        defaults={'price': price}
+                        defaults={'value': price}
                     )
 
         self.stdout.write(self.style.SUCCESS("Datos cargados exitosamente."))
